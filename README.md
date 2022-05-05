@@ -16,7 +16,7 @@ A full-stack app for users to leave reviews on their work experiences at compani
 
 ---
 
-## **_Summary_**
+## **Summary**
 
 OK Corporate is a site for users to leave reviews of the companies that they have worked at. Similar to Glassdoor, OK Corporate will have the ability to post reviews with a ratings system and will have a helpful and unhelpful button so the community can deem which reviews are most important. A user will be able to edit and delete the reviews they create from their profile page on the site.
 
