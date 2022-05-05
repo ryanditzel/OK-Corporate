@@ -6,13 +6,13 @@ A full-stack app for users to leave reviews on their work experiences at compani
 
 ---
 
-#### [LinkedIn] (https://www.linkedin.com/in/ryanditzel/)
+#### [LinkedIn](https://www.linkedin.com/in/ryanditzel/)
 
 ---
 
 ### Technologies Used:
 
-## Github, Figma, Trello, VS Code, Material UI
+### Github, Figma, Trello, VS Code, Material UI
 
 ---
 
@@ -29,3 +29,5 @@ The back-end will be built with Django and Python. The database will be filled w
 
 ERD:
 ![ERD](./readme_img/ERD-P4.png)
+
+### [Trello Board](https://trello.com/b/YLnve97F/ok-corporate)
