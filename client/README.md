@@ -1,33 +1,70 @@
-# **OK-Corporate**
+# Getting Started with Create React App
 
-A full-stack app for users to leave reviews on their work experiences at companies.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-#### Capstone Project
+## Available Scripts
 
----
+In the project directory, you can run:
 
-#### [LinkedIn](https://www.linkedin.com/in/ryanditzel/)
+### `npm start`
 
----
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Technologies Used:
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-### Github, Figma, Trello, VS Code, Material UI
+### `npm test`
 
----
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## **Summary**
+### `npm run build`
 
-OK Corporate is a site for users to leave reviews of the companies that they have worked at. Similar to Glassdoor, OK Corporate will have the ability to post reviews with a ratings system and will have a helpful and unhelpful button so the community can deem which reviews are most important. A user will be able to edit and delete the reviews they create from their profile page on the site.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The front-end will be a fully functional React app with a landing page where you will be able to sign in or sign up if you are not already registered. Once past the log in page you'll see your main feed consisting of other people's reviews. There will be a Navigation Bar with links to Create Review, Feed, Your Profile, and Sign Out.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Component Hierarchy:
-![Hierarchy](./readme_img/Component-Hierarchy.png)
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-The back-end will be built with Django and Python. The database will be filled with Faker information for testing and display purposes.
+### `npm run eject`
 
-ERD:
-![ERD](./readme_img/ERD-P4.png)
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-### [Trello Board](https://trello.com/b/YLnve97F/ok-corporate)
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
