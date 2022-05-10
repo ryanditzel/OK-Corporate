@@ -81,9 +81,9 @@
 
 .landingbutton {
     color: #fff !important;
-    background-color: #5E3DD3;
+    background-color: #000000;
     border-radius: 10px;
-    border: 1px solid #5E3DD3;
+    border: 1px solid #000000;
     width: 200px;
     height:60px;
     font-size: 18px;
@@ -92,22 +92,22 @@
 }
 .landingbutton:hover {
     color: white;
-    background-color: #867dc7;
+    background-color: #e2c551;
 }
 
 
 .landingbuttonSignin {
-    color: #5E3DD3;
+    color: #000000;
     /* background-color: #5D54A4; */
     border-radius: 10px;
-    border: 1px solid #5E3DD3;
+    border: 1px solid #000000;
     width: 200px;
     height:60px;
     font-size: 18px;
     font-weight: 600;
 }
 .landingbuttonSignin:hover{
-    background-color: #867dc7;
+    background-color: #e2c551;
     color:#fff;
 }
 

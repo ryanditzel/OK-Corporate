@@ -1,20 +1,20 @@
 import React from "react";
 import "../styles/landing.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
   return (
     <main className="landing-container">
       <div className="landing-leftside"></div>
       <div className="landing-rightside">
         <div className="landing-content">
-          <h1 className="landing-header">
+          <h3 className="landing-header">
             Review and discover companies at
             <br />
             <span id="OK">OK Corporate</span>
-          </h1>
+          </h3>
           <p className="landing-description">
             Join today to create and explore real reviews of companies that are
             written by real employees.
@@ -22,14 +22,14 @@ const Landing = () => {
         </div>
         <div className="landing-button-wrapper">
           <div className="signupbutton">
-            {/* <button
+            <button
               className="landingbutton"
               onClick={() => navigate("/register")}
             >
               Become a Pro
-            </button> */}
+            </button>
           </div>
-          {/* <div className="signinbutton">
+          <div className="signinbutton">
             <button
               className="landingbuttonSignin"
               onClick={() => navigate("/signin")}
@@ -37,7 +37,7 @@ const Landing = () => {
               Sign in
             </button>
             <p className="backto-Signin">Already have an account?</p>
-          </div> */}
+          </div>
         </div>
         <div className="counter"></div>
       </div>

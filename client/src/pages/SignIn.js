@@ -49,7 +49,6 @@ function SignIn() {
     <div className="form login-form">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        Username:
         <input
           type="text"
           name="username"
@@ -57,11 +56,10 @@ function SignIn() {
           value={login.username}
           onChange={handleChange}
         />
-        Password:
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Password (Minimum 8 Characters)"
           value={login.password}
           onChange={handleChange}
         />

@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../ContextFiles/LoginContext";
 
-import AxiosInstance from "../Axios";
+import AxiosInstance from "../Axios/AxiosInstance";
 
 const SignOut = (props) => {
   const { setLoginStatus } = useContext(LoginContext);

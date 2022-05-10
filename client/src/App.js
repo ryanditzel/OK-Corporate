@@ -6,7 +6,7 @@ import Landing from "./pages/Landing";
 import LoginContext from "./ContextFiles/LoginContext";
 import SignIn from "./pages/SignIn";
 import Register from "./pages/Register";
-import SignOut from "./pages/SignOut";
+import SignOut from "./components/SignOut";
 
 const App = () => {
   const [loginStatus, setLoginStatus] = useState(false);

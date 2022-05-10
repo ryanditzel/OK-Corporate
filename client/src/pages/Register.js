@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import AxiosInstance from "../Axios/AxiosInstance";
 import { LoginContext } from "../ContextFiles/LoginContext";
+import "../styles/register.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -45,55 +46,59 @@ const Register = () => {
   }
 
   return (
-    <div className="form signup-form">
+    <div className="register-page">
       <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        Email:{" "}
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        First name:{" "}
-        <input
-          type="text"
-          name="first_name"
-          placeholder="First Name"
-          value={formData.first_name}
-          onChange={handleChange}
-        />
-        Last name:{" "}
-        <input
-          type="text"
-          name="last_name"
-          placeholder="Last Name"
-          value={formData.last_name}
-          onChange={handleChange}
-        />
-        Username:{" "}
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-        />
-        Password:{" "}
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Register</button>
-        <div className="form-footer">
-          <p>Have an account already?</p>
-          <a href="/login/"> Log-In </a>
+      <div className="screen__content">
+        <div>
+          <h3 className="register-description">START FOR FREE</h3>
+          <h1 className="register-header">Sign up</h1>
         </div>
-      </form>
+        <form className="col-3" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="first_name"
+            placeholder="First Name"
+            value={formData.first_name}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="last_name"
+            placeholder="Last Name"
+            value={formData.last_name}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={formData.username}
+            onChange={handleChange}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password (Minimum 8 Characters)"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <button type="submit">Register</button>
+          <div className="form-footer">
+            <p className="register-rules">
+              By signing up, you agree to the Terms of Service and Privacy
+              Policy, including Cookie Use.
+            </p>
+            <a href="/login/">Sign In</a>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
