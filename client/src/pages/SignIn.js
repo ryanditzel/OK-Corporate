@@ -39,7 +39,7 @@ function SignIn() {
           localStorage.setItem("user_id", res.data.id);
           localStorage.setItem("username", login.username);
           setLoginStatus(true);
-          navigate("/");
+          navigate("/feed");
         });
       })
       .catch((error) => console.error);
@@ -59,7 +59,7 @@ function SignIn() {
         <input
           type="password"
           name="password"
-          placeholder="Password (Minimum 8 Characters)"
+          placeholder="Password (Min. 8 Char.)"
           value={login.password}
           onChange={handleChange}
         />

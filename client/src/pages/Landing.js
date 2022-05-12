@@ -26,7 +26,7 @@ const Landing = () => {
               className="landingbutton"
               onClick={() => navigate("/register")}
             >
-              Become a Pro
+              Register
             </button>
           </div>
           <div className="signinbutton">

@@ -1,6 +1,6 @@
 .landing-leftside, .landing-rightside {
     height: 90vh;
-    width: 100%;
+
 }
 
 .landing-container {
@@ -10,14 +10,14 @@
     /* flex-wrap: wrap; */
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    /* padding: 50px; */
     height: calc(100vh - 4em);
 }
 
 .landing-leftside{
     display:flex;
     flex: 50%;
-    /* background-image:url('../assets/LandingImage/LandingImage.png'); */
+    background-image: url('../assets/OK_logo.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -67,7 +67,7 @@
 }
 
 .landing-header {
-    font-size: 72px;
+    font-size: 56px;
     font-weight: 700;
     text-align: center;
 }
