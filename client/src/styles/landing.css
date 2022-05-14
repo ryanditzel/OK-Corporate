@@ -82,7 +82,7 @@
 .landingbutton {
     color: #fff !important;
     background-color: #000000;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     border: 1px solid #000000;
     width: 200px;
     height:60px;
@@ -91,15 +91,13 @@
     margin-right: 30px;
 }
 .landingbutton:hover {
-    color: white;
-    background-color: #e2c551;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
 }
 
 
 .landingbuttonSignin {
     color: #000000;
-    /* background-color: #5D54A4; */
-    border-radius: 10px;
     border: 1px solid #000000;
     width: 200px;
     height:60px;
@@ -107,8 +105,8 @@
     font-weight: 600;
 }
 .landingbuttonSignin:hover{
-    background-color: #e2c551;
-    color:#fff;
+    background-color: #ffffff;
+    color:rgb(0, 0, 0);
 }
 
 .backto-Signin {

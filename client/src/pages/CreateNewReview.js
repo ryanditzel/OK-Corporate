@@ -1,47 +1,41 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AxiosInstance from "../Axios/AxiosInstance";
+import { CreateReview } from "../services/PostService";
 import "../styles/createpost.css";
 
-const CreateReview = () => {
-  const username = localStorage.getItem("username");
+const CreateNewReview = ({ user, authenticated }) => {
+  let navigate = useNavigate();
 
-  const initialState = {
-    user: username,
+  const [formValues, setFormValues] = useState({
+    userId: user.id,
     company: "",
     title: "",
     jobtitle: "",
     body: "",
+  });
+
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  const navigate = useNavigate();
-  const [form, setForm] = useState(initialState);
-
-  const handleChange = (event) => {
-    setForm({ ...form, [event.target.id]: event.target.value });
-  };
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-    await AxiosInstance.post("review/create", {
-      user: form.user,
-      company: form.company,
-      title: form.title,
-      jobtitle: form.jobtitle,
-      body: form.body,
-    }).then((res) => {
-      navigate("/review/success");
-      console.log(res);
-      return res.data;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await CreateReview(formValues);
+    setFormValues({
+      company: "",
+      title: "",
+      jobtitle: "",
+      body: "",
     });
-  }
+    navigate("/feed");
+  };
 
-  return (
+  return user && authenticated ? (
     <div className="createpost">
       <div className="createpost_content">
         <h3>Tell us your thoughts below!</h3>
       </div>
-      <div>
+      <div className="create-wrapper">
         <form className="col-1" onSubmit={handleSubmit}>
           <div className="create-wrapper">
             <label>Let’s begin with the company's name</label>
@@ -51,7 +45,7 @@ const CreateReview = () => {
               name="title"
               type="text"
               placeholder="Company Name"
-              value={form.title}
+              value={formValues.title}
               required
             />
           </div>
@@ -63,7 +57,7 @@ const CreateReview = () => {
               type="text"
               name="review"
               placeholder="Review Title"
-              value={form.image}
+              value={formValues.image}
               required
             />
           </div>
@@ -75,7 +69,7 @@ const CreateReview = () => {
               name="role"
               type="text"
               placeholder="Job Title"
-              value={form.title}
+              value={formValues.jobTitle}
               required
             />
           </div>
@@ -87,15 +81,41 @@ const CreateReview = () => {
               name="body"
               type="textarea"
               placeholder="Project Details(255 words limited)"
-              value={form.body}
+              value={formValues.body}
               required
             />
           </div>
-          <button className="postButton">Post My Project</button>
+          <button className="postButton">Post Review</button>
         </form>
       </div>
+    </div>
+  ) : (
+    <div
+      className="must-signin"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "200px",
+      }}
+    >
+      <h3 style={{ fontSize: "36px" }} className="signin-header">
+        Oops, please log in!{" "}
+      </h3>
+      <button
+        style={{ margin: "10px 0" }}
+        className="landingbutton"
+        onClick={() => navigate("/signin")}
+      >
+        {" "}
+        Sign in
+      </button>
+      <button className="landingbuttonSignin" onClick={() => navigate("/")}>
+        Back to Home
+      </button>
     </div>
   );
 };
 
-export default CreateReview;
+export default CreateNewReview;

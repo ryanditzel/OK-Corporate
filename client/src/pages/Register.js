@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
-import AxiosInstance from "../Axios/AxiosInstance";
-import { LoginContext } from "../ContextFiles/LoginContext";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RegisterUser } from "../services/Auth";
 import "../styles/register.css";
 
 const Register = () => {
-  const [formData, setFormData] = useState({
+  let navigate = useNavigate();
+  const [formValues, setFormValues] = useState({
     email: "",
     first_name: "",
     last_name: "",
@@ -13,37 +14,28 @@ const Register = () => {
   });
 
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
-  // Submit form
-  async function handleSubmit(event) {
-    event.preventDefault();
-    await AxiosInstance.post("/users/create", {
-      email: formData.email,
-      first_name: formData.first_name,
-      last_name: formData.last_name,
-      username: formData.username,
-      password: formData.password,
-    })
-      // Then, log the newly made user in
-      .then((res) => {
-        localStorage.setItem("username", formData.username);
-        localStorage.setItem("user_id", res.data.id);
-        AxiosInstance.post("token/obtain/", {
-          username: formData.username,
-          password: formData.password,
-        }).then((res) => {
-          AxiosInstance.defaults.headers[
-            "Authorization"
-          ] = `JWT ${res.data.access}`;
-          localStorage.setItem("access_token", res.data.access);
-          localStorage.setItem("refresh_token", res.data.refresh);
-          return res;
-        });
-      })
-      .catch((error) => console.error);
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await RegisterUser({
+      email: formValues.email,
+      firstName: formValues.first_name,
+      lastName: formValues.last_name,
+      userName: formValues.username,
+      pass: formValues.password,
+    });
+    console.log(RegisterUser);
+    setFormValues({
+      email: "",
+      first_name: "",
+      last_name: "",
+      username: "",
+      password: "",
+    });
+    navigate("/signin");
+  };
 
   return (
     <div className="register-page">
@@ -58,35 +50,35 @@ const Register = () => {
             type="email"
             name="email"
             placeholder="Email"
-            value={formData.email}
+            value={formValues.email}
             onChange={handleChange}
           />
           <input
             type="text"
             name="first_name"
             placeholder="First Name"
-            value={formData.first_name}
+            value={formValues.first_name}
             onChange={handleChange}
           />
           <input
             type="text"
             name="last_name"
             placeholder="Last Name"
-            value={formData.last_name}
+            value={formValues.last_name}
             onChange={handleChange}
           />
           <input
             type="text"
             name="username"
             placeholder="Username"
-            value={formData.username}
+            value={formValues.username}
             onChange={handleChange}
           />
           <input
             type="password"
             name="password"
             placeholder="Password (Minimum 8 Characters)"
-            value={formData.password}
+            value={formValues.password}
             onChange={handleChange}
           />
           <button type="submit">Register</button>

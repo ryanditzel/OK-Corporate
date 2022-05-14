@@ -1,0 +1,18 @@
+.delete-review-btn {
+    margin-top: 0;
+    width: 140px;
+    height: 40px;
+    border: none;
+    background-color: #000000;
+    color: #ffff;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+.delete-review-btn:hover {
+    background-color: #ffffff;
+    color:#000000;
+    border: 1px #000000;
+}

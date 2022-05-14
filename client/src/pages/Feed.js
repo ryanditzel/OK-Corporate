@@ -1,82 +1,53 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import AxiosInstance from "../Axios/AxiosInstance";
-import { LoginContext } from "../ContextFiles/LoginContext";
+import { GetAllReviews, GetReviewByID } from "../services/PostService";
+import SignInAgain from "../components/SignInAgain";
 
-const Feed = (props) => {
+const Feed = ({ user, authenticated }) => {
   const [review, setReview] = useState([]);
-  const { loginStatus, setLoginStatus } = useContext(LoginContext);
-  const navigate = useNavigate();
-  const { id } = useParams();
-  console.log(id);
+  // const [reviewId, setReviewId] = useState([]);
 
-  async function checkLogin() {
-    try {
-      setLoginStatus(true);
-    } catch {}
-  }
+  let { id } = useParams();
 
-  const getReviews = async (id) => {
-    const reviewList = await AxiosInstance.get(`reviews/`);
-    console.log(reviewList);
-    setReview(reviewList.data);
-  };
+  let navigate = useNavigate();
 
   useEffect(() => {
-    getReviews();
-  }, [id]);
+    const handleReview = async () => {
+      const data = await GetAllReviews();
+      setReview(data);
+    };
+    // const handleReviewById = async () => {
+    //   const data = await GetReviewByID();
+    //   setReviewId(data);
+    // };
+    handleReview();
+    // handleReviewById();
+  }, []);
 
-  if (review) {
-    const feed = review.reverse().map((review) => {
-      return (
-        <div key={review.id} className="feed-content">
-          <div className="feed-header">
-            <h3 id="review-company">REVIEWED COMPANY: {review.company.name}</h3>
-            <h3 id="review-title">TITLE: {review.title}</h3>
-            <h3 id="review-author">USERNAME: {review.user.username}</h3>
-            <button
+  return user && authenticated ? (
+    <div className="feed-page">
+      <div className="feed-title">
+        <h1>Review Feed</h1>
+      </div>
+      <div className="feed-wrapper">
+        {review.map((review) => (
+          <div className="feed-content" key={review.id}>
+            <h2 id="review-title">{review.title}</h2>
+            <h4 id="review-jobtitle">{review.jobTitle}</h4>
+            <p id="feed-body"> {review.body}</p>
+            <p id="review-author">{review.user}</p>
+            {/* <button
               onClick={() => navigate(`/companydetail/${review.company.id}`)}
             >
               More
-            </button>
+            </button> */}
           </div>
-        </div>
-      );
-    });
-    return (
-      <div className="feed-container">
-        <button>
-          <Link to="/createreview">Create Reviews</Link>
-          {feed}
-        </button>
+        ))}
       </div>
-    );
-  } else {
-    <div
-      className="must-signin"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: "200px",
-      }}
-    >
-      <h3 style={{ fontSize: "36px" }} className="signin-header">
-        Oops
-      </h3>
-      <button
-        style={{ margin: "10px 0" }}
-        className="landingbutton"
-        onClick={() => navigate("/signin")}
-      >
-        Sign in
-      </button>
-      <button className="landingbuttonSignin" onClick={() => navigate("/")}>
-        Back to Home
-      </button>
-    </div>;
-  }
+    </div>
+  ) : (
+    <SignInAgain />
+  );
 };
 
 export default Feed;

@@ -1,76 +1,80 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AxiosInstance from "../Axios/AxiosInstance";
-import { LoginContext } from "../ContextFiles/LoginContext";
+import { SignInUser } from "../services/Auth";
+import "../styles/signin.css";
 
-function SignIn() {
-  const navigate = useNavigate();
+const SignIn = (props) => {
+  let navigate = useNavigate();
 
-  const { setLoginStatus } = useContext(LoginContext);
-  const [login, setLogin] = useState({
-    username: "",
-    password: "",
-  });
+  const [formValues, setFormValues] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
-    setLogin({ ...login, [e.target.name]: e.target.value });
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    await AxiosInstance.post("token/obtain/", {
-      username: login.username,
-      password: login.password,
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          AxiosInstance.defaults.headers[
-            "Authorization"
-          ] = `JWT ${res.data.access}`;
-          localStorage.setItem("access_token", res.data.access);
-          localStorage.setItem("refresh_token", res.data.refresh);
-        } else {
-          return res;
-        }
-      })
-      .then((res) => {
-        AxiosInstance.get(`users/${login.username}`).then((res) => {
-          localStorage.setItem("user_id", res.data.id);
-          localStorage.setItem("username", login.username);
-          setLoginStatus(true);
-          navigate("/feed");
-        });
-      })
-      .catch((error) => console.error);
-  }
+    const payload = await SignInUser(formValues);
+    setFormValues({ email: "", password: "" });
+    props.setUser(payload);
+    props.toggleAuthenticated(true);
+    navigate("/feed");
+  };
 
   return (
-    <div className="form login-form">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={login.username}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password (Min. 8 Char.)"
-          value={login.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Login</button>
-      </form>
-      <div className="form-footer">
-        <p>Don't have an account yet?</p>
-        <a href="/register/">Register</a>
+    <div className="sign-in-page">
+      <div className="signIn-leftside"></div>
+      <div className="screen__content">
+        <div>
+          <h3 className="signin-description">
+            Welcome back! Please sign back in.
+          </h3>
+          <h1 className="signin-header">Welcome back</h1>
+        </div>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div className="login_field">
+            <label className="email">Email</label>
+            <input
+              className="login_input"
+              onChange={handleChange}
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              value={formValues.username}
+              required
+            />
+          </div>
+
+          <div className="login_field">
+            <label className="password">Password</label>
+            <input
+              className="login_input"
+              onChange={handleChange}
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              value={formValues.password}
+              required
+            />
+          </div>
+          <button
+            className="login_signin"
+            disabled={!formValues.email || !formValues.password}
+          >
+            Sign In
+          </button>
+
+          <p className="signin-intro">
+            Don’t have an account?
+            <a href="/register">
+              <strong style={{ color: "#5E3DD3" }}>Sign up now!</strong>
+            </a>
+          </p>
+        </form>
+        <div className="counter"></div>
       </div>
     </div>
   );
-}
+};
 
 export default SignIn;

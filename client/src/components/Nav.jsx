@@ -2,29 +2,30 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "../styles/navbar.css";
 import logo from "../assets/OK_logo.png";
-import LoginContext from "../ContextFiles/LoginContext";
 
-const Nav = ({ handleLogOut }) => {
-  const { loginStatus } = useContext(LoginContext);
-
+const Nav = ({ authenticated, user, handleLogOut }) => {
   const [showLinks, setShowLinks] = useState(false);
 
   let authenticatedOptions;
-  if (loginStatus) {
+  // console.log(user, loginStatus);
+  if (user) {
     authenticatedOptions = (
       <nav>
-        {/* <div className="creatpost">
-          <Link to="/createpost">
-            <button className="creatpostbtn">Create A Review</button>
+        <div className="creatreview">
+          <Link to="/createreview">
+            <button className="creatreviewbtn">Create A Review</button>
           </Link>
-        </div> */}
+        </div>
 
         <div className="rightside" id={showLinks ? "hidden" : ""}>
-          <Link className="rightsideLink" to="/credits">
+          {/* <Link className="rightsideLink" to="/credits">
             Credits
-          </Link>
+          </Link> */}
           <Link className="rightsideLink" to="/feed">
             Feed
+          </Link>
+          <Link className="rightsideLink" to="/profile">
+            Profile
           </Link>
           <Link className="rightsideLink" onClick={handleLogOut} to="/">
             Sign Out
@@ -47,11 +48,11 @@ const Nav = ({ handleLogOut }) => {
   return (
     <header>
       <div className="logo-wrapper">
-        <Link to="/">
-          {/* <img id="logo" src={logo} alt="logo" /> */}
+        <Link to="/feed">
+          {/* <img id="nav-logo" src={logo} alt="logo" /> */}
           OK Corporate
         </Link>
-        {loginStatus ? authenticatedOptions : publicOptions}
+        {authenticated && user ? authenticatedOptions : publicOptions}
       </div>
     </header>
   );

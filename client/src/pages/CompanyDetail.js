@@ -1,38 +1,34 @@
 import React, { useContext, useEffect, useState } from "react";
 import "../styles/companydetail.css";
 import { useNavigate, useParams } from "react-router-dom";
-import AxiosInstance from "../Axios/AxiosInstance";
-import { LoginContext } from "../ContextFiles/LoginContext";
 
 const CompanyDetail = (props) => {
-  const { loginStatus, setLoginStatus } = useContext(LoginContext);
   const [company, setCompany] = useState([]);
+  const [review, setReview] = useState([]);
   const { id } = useParams();
 
-  async function checkLogin() {
-    try {
-      setLoginStatus(true);
-    } catch {}
-  }
-
-  const getCompany = async () => {
-    const companyList = await AxiosInstance.get(`company/${id}`);
-    setCompany(companyList.data);
-    console.log(company);
-  };
+  // const getReviews = async (id) => {
+  //   const reviewList = await AxiosInstance.get(`reviews/${id}`);
+  //   console.log(reviewList);
+  //   setReview(reviewList.data);
+  // };
 
   useEffect(() => {
-    getCompany();
+    // getCompany();
+    // getReviews();
   }, []);
+
+  console.log({ company });
 
   return (
     <div key={company.id} className="company-content">
-      {company.map((company) => (
-        <div className="company-header">
-          <h3 id="company-name">Company Name:{company.name}</h3>
-          <h4 id="company-location">Company Location:{company.location}</h4>
-        </div>
-      ))}
+      <div className="company-header">
+        <h4 id="company-name">Company Name:{company.name}</h4>
+        <h4 id="company-location">Company Location:{company.location}</h4>
+        <h4 id="company-review">Company Review: {company.review}</h4>
+        <h4 id="company-title">Company Title: {company.title}</h4>
+        <h4 id="company-body">Company body: {company.body}</h4>
+      </div>
     </div>
   );
 };

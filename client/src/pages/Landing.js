@@ -11,9 +11,9 @@ const Landing = () => {
       <div className="landing-rightside">
         <div className="landing-content">
           <h3 className="landing-header">
-            Review and discover companies at
-            <br />
-            <span id="OK">OK Corporate</span>
+            Review and discover companies
+            {/* <br />
+            <span id="OK">OK Corporate</span> */}
           </h3>
           <p className="landing-description">
             Join today to create and explore real reviews of companies that are
