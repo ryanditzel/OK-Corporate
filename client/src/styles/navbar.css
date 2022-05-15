@@ -48,7 +48,7 @@ Link {
     font-size: 16px;
   }
   nav a:hover{
-      text-decoration: line-through;
+      text-decoration:underline;
   }
   
   

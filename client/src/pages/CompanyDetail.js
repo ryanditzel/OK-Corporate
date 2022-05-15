@@ -18,7 +18,7 @@ const CompanyDetail = (props) => {
     // getReviews();
   }, []);
 
-  console.log({ company });
+  // console.log({ company });
 
   return (
     <div key={company.id} className="company-content">

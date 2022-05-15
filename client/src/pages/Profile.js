@@ -1,36 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { GetAllReviews } from "../services/PostService";
-import { useNavigate } from "react-router-dom";
 import DeleteReviewBtn from "../components/DeleteReviewBtn";
 import SignInAgain from "../components/SignInAgain";
+import UpdateReviewBtn from "../components/UpdateReviewBtn";
+import "../styles/profile.css";
 
 const Profile = ({ user, authenticated }) => {
   const [reviews, setReviews] = useState([]);
-
-  let navigate = useNavigate();
 
   useEffect(() => {
     const handleReview = async () => {
       const data = await GetAllReviews();
       setReviews(data);
+      // console.log(data);
     };
     handleReview();
-    console.log(reviews);
   }, []);
 
-  return user && authenticated ? (
+  return user && authenticated && reviews[0] ? (
     <div className="profile-page">
       {reviews.map((review) =>
         review.userId === user.id ? (
           <div className="review-profile" key={review.id}>
-            <h3>{review.title}</h3>
-            <h3>{review.company}</h3>
-            <h3>{review.jobTitle}</h3>
-            <p>{review.body}</p>
-            <button>{review.helpful}Helpful</button>
-            <button>{review.unhelpful}Not Helpful</button>
-            <div className="delete-review-btn">
+            <h3 id="review-title">{review.title}</h3>
+            <h3 id="review-jobtitle">{review.jobTitle}</h3>
+            <p id="feed-body">{review.body}</p>
+            <div className="delete-review-btn-container">
               <DeleteReviewBtn id={review.id} />
+            </div>
+            <div className="update-review-btn">
+              <UpdateReviewBtn
+                id={review.id}
+                title={review.title}
+                jobTitle={review.jobTitle}
+                body={review.body}
+              />
             </div>
           </div>
         ) : (

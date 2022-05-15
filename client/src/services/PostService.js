@@ -39,6 +39,7 @@ export const CreateReview = async (data) => {
 export const EditReview = async (reviewId, data) => {
   try {
     const res = await Client.put(`/api/reviews/update/${reviewId}`, data);
+    console.log(res.data);
     return res.data;
   } catch (error) {
     throw error;

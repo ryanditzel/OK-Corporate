@@ -2,19 +2,17 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { GetAllReviews, GetReviewByID } from "../services/PostService";
 import SignInAgain from "../components/SignInAgain";
+import "../styles/feed.css";
 
 const Feed = ({ user, authenticated }) => {
   const [review, setReview] = useState([]);
   // const [reviewId, setReviewId] = useState([]);
 
-  let { id } = useParams();
-
-  let navigate = useNavigate();
-
   useEffect(() => {
     const handleReview = async () => {
       const data = await GetAllReviews();
       setReview(data);
+      // console.log(data);
     };
     // const handleReviewById = async () => {
     //   const data = await GetReviewByID();
@@ -36,11 +34,9 @@ const Feed = ({ user, authenticated }) => {
             <h4 id="review-jobtitle">{review.jobTitle}</h4>
             <p id="feed-body"> {review.body}</p>
             <p id="review-author">{review.user}</p>
-            {/* <button
-              onClick={() => navigate(`/companydetail/${review.company.id}`)}
-            >
-              More
-            </button> */}
+            {review.helpful}
+            <button>Helpful </button>
+            {review.unhelpful} <button>Not Helpful </button>
           </div>
         ))}
       </div>

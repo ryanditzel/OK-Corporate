@@ -26,7 +26,7 @@ const Register = () => {
       userName: formValues.username,
       pass: formValues.password,
     });
-    console.log(RegisterUser);
+    // console.log(RegisterUser);
     setFormValues({
       email: "",
       first_name: "",

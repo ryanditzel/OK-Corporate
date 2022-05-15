@@ -9,6 +9,7 @@ import Feed from "./pages/Feed";
 import CreateReview from "./pages/CreateNewReview";
 import CompanyDetail from "./pages/CompanyDetail";
 import Profile from "./pages/Profile";
+import { CheckSession } from "./services/Auth";
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false);
@@ -19,6 +20,19 @@ const App = () => {
     toggleAuthenticated(false);
     localStorage.clear();
   };
+
+  const checkToken = async () => {
+    const user = await CheckSession();
+    setUser(user);
+    toggleAuthenticated(true);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      checkToken();
+    }
+  }, []);
 
   return (
     <div className="App">

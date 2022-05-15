@@ -8,9 +8,8 @@ const CreateNewReview = ({ user, authenticated }) => {
 
   const [formValues, setFormValues] = useState({
     userId: user.id,
-    company: "",
     title: "",
-    jobtitle: "",
+    jobTitle: "",
     body: "",
   });
 
@@ -22,12 +21,11 @@ const CreateNewReview = ({ user, authenticated }) => {
     e.preventDefault();
     await CreateReview(formValues);
     setFormValues({
-      company: "",
       title: "",
-      jobtitle: "",
+      jobTitle: "",
       body: "",
     });
-    navigate("/feed");
+    navigate("/profile");
   };
 
   return user && authenticated ? (
@@ -50,23 +48,11 @@ const CreateNewReview = ({ user, authenticated }) => {
             />
           </div>
           <div className="create-wrapper">
-            <label>What would you like to title this review?</label>
-            <input
-              className="create-input"
-              onChange={handleChange}
-              type="text"
-              name="review"
-              placeholder="Review Title"
-              value={formValues.image}
-              required
-            />
-          </div>
-          <div className="create-wrapper">
             <label>What was your job title?</label>
             <input
               className="create-input"
               onChange={handleChange}
-              name="role"
+              name="jobTitle"
               type="text"
               placeholder="Job Title"
               value={formValues.jobTitle}

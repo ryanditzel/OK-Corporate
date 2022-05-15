@@ -1,0 +1,117 @@
+.update-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin-top: 10px;
+}
+
+.create-input {
+    display: flex;
+    width: 300px;
+    height:60px;
+    border: 0;
+    border-bottom: 1px solid white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.create-update {
+    display: flex;
+    width: 300px;
+    height:60px;
+    border: 0;
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+    color: #000;
+}
+.create-update-title {
+    display: flex;
+    width: 300px;
+    height:60px;
+    border: 0;
+    border-bottom: 1px solid white;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.col-2 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 500px;
+    max-width: 80%;
+    color:black;
+    
+
+}
+.col-2 textarea {
+    min-height: 120px;
+}
+
+.update-button {
+    margin-top: 0;
+    margin-left: 10px;
+    width: 140px;
+    height: 40px;
+    border: none;
+    background-color: #000000;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+
+    
+}
+.update-button:hover {
+    background-color: #ffffff;
+    color:#000;
+    border: 1px solid #000000;
+}
+
+.submit-button {
+    margin-top: 0;
+    width: 180px;
+    height: 45px;
+    border: none;
+    background-color: #000000;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    color: white;
+}
+.submit-button:hover {
+    background-color: #fefeff;
+    color: #000;
+    border: 1px solid #000000;
+}
+
+.close-update-button {
+    position: absolute;
+    right: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    margin-top: 10px;
+    background-color: #000000;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    
+}
+.close-update-button:hover {
+    background-color: #ffffff;
+    color: black;
+}
+
