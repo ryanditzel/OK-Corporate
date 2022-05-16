@@ -26,10 +26,8 @@ const SignIn = (props) => {
       <div className="signIn-leftside"></div>
       <div className="screen__content">
         <div>
-          <h3 className="signin-description">
-            Welcome back! Please sign back in.
-          </h3>
           <h1 className="signin-header">Welcome back</h1>
+          <h3 className="signin-description">Please sign in.</h3>
         </div>
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="login_field">

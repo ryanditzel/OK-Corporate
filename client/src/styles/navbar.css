@@ -21,7 +21,13 @@ Link {
     justify-content: right;
     padding-left: 50px;
     align-items: center;
-    font-size: 32px;
+    font-size: 30px;
+    margin-top: 50px;
+  }
+
+  .logo-wrapper a {
+    text-decoration: none;
+    color: black
   }
   
   .signin-page {

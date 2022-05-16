@@ -10,6 +10,7 @@ import CreateReview from "./pages/CreateNewReview";
 import CompanyDetail from "./pages/CompanyDetail";
 import Profile from "./pages/Profile";
 import { CheckSession } from "./services/Auth";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [authenticated, toggleAuthenticated] = useState(false);
@@ -76,6 +77,7 @@ const App = () => {
             element={<CreateReview user={user} authenticated={authenticated} />}
           />
         </Routes>
+        <Footer />
       </main>
     </div>
   );

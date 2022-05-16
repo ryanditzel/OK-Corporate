@@ -39,48 +39,63 @@ const Register = () => {
 
   return (
     <div className="register-page">
-      <h1>Register</h1>
+      <div className="register-leftside"></div>
       <div className="screen__content">
         <div>
           <h3 className="register-description">START FOR FREE</h3>
           <h1 className="register-header">Sign up</h1>
         </div>
         <form className="col-3" onSubmit={handleSubmit}>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formValues.email}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="first_name"
-            placeholder="First Name"
-            value={formValues.first_name}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="last_name"
-            placeholder="Last Name"
-            value={formValues.last_name}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={formValues.username}
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password (Minimum 8 Characters)"
-            value={formValues.password}
-            onChange={handleChange}
-          />
+          <div className="input-wrapper">
+            <input
+              className="register_input"
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formValues.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input-wrapper">
+            <input
+              className="register_input"
+              type="text"
+              name="first_name"
+              placeholder="First Name"
+              value={formValues.first_name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input-wrapper">
+            <input
+              className="register_input"
+              type="text"
+              name="last_name"
+              placeholder="Last Name"
+              value={formValues.last_name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input-wrapper">
+            <input
+              className="register_input"
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={formValues.username}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input-wrapper">
+            <input
+              className="register_input"
+              type="password"
+              name="password"
+              placeholder="Password (Minimum 8 Characters)"
+              value={formValues.password}
+              onChange={handleChange}
+            />
+          </div>
           <button type="submit">Register</button>
           <div className="form-footer">
             <p className="register-rules">

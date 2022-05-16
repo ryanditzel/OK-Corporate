@@ -50,7 +50,7 @@ const Nav = ({ authenticated, user, handleLogOut }) => {
       <div className="logo-wrapper">
         <Link to="/feed">
           {/* <img id="nav-logo" src={logo} alt="logo" /> */}
-          OK Corporate
+          <h1>OK Corporate</h1>
         </Link>
         {authenticated && user ? authenticatedOptions : publicOptions}
       </div>
